@@ -57,120 +57,142 @@
 								</div><!-- /.page-header -->
 								<div class="row">
 									<div class="col-xs-12">
-										<div class="pull-right" style="font-family: 'Times New Roman', Times, serif;">
-											<a href="/admin/user/create">
-												<button type="button" class="btn btn-success" fdprocessedid="b81s1">
+										<form id="deleteForm" method="post" action="/admin/user/delete/confirm">
+											<div class="pull-right"
+												style="font-family: 'Times New Roman', Times, serif;">
+												<a href="/admin/user/create">
+													<button type="button" class="btn btn-success" fdprocessedid="b81s1">
+														<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+															fill="currentColor" class="bi bi-person-add"
+															viewBox="0 0 16 16">
+															<path
+																d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+															<path
+																d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+														</svg>
+														Thêm người dùng
+													</button>
+												</a>
+												<button type="button" class="btn btn-primary" fdprocessedid="5jng"
+													id="btnDeleteSelected">
 													<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-														fill="currentColor" class="bi bi-person-add"
+														fill="currentColor" class="bi bi-person-dash"
 														viewBox="0 0 16 16">
 														<path
-															d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0m-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+															d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1m0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
 														<path
 															d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
 													</svg>
-													Thêm người dùng
+													Xóa người dùng
 												</button>
-											</a>
-											<button type="button" class="btn btn-primary" fdprocessedid="5jng">
-												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-													fill="currentColor" class="bi bi-person-dash" viewBox="0 0 16 16">
-													<path
-														d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M11 12h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1 0-1m0-7a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
-													<path
-														d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
-												</svg>
-												Xóa người dùng
-											</button>
-										</div>
-										<div class="row" style="margin-bottom: 360px; margin-top: 55px;">
-											<div class="col-xs-12">
-												<table id="simple-table"
-													class="table table-striped table-bordered table-hover">
-													<thead>
-														<tr>
-															<th class="center">
-																<label class="pos-rel">
-																	<input type="checkbox" id="checkAll" class="ace">
-																	<span class="lbl"></span>
-																</label>
-															</th>
-															<th>ID</th>
-															<th>Tên người dùng</th>
-															<th>Email</th>
-															<th>Vai trò</th>
-															<th>Thao tác</th>
-														</tr>
-													</thead>
-													<c:forEach var="user" items="${users}">
-														<tbody>
-															<tr class="">
-																<td class="center">
+											</div>
+											<div class="row" style="margin-bottom: 360px; margin-top: 55px;">
+												<div class="col-xs-12">
+													<table id="simple-table"
+														class="table table-striped table-bordered table-hover">
+														<thead>
+															<tr>
+																<th class="center">
 																	<label class="pos-rel">
-																		<input type="checkbox" class="ace child-check">
+																		<input type="checkbox" id="checkAll"
+																			class="ace">
 																		<span class="lbl"></span>
 																	</label>
-																</td>
+																</th>
+																<th>ID</th>
+																<th>Tên người dùng</th>
+																<th>Email</th>
+																<th>Vai trò</th>
+																<th>Thao tác</th>
+															</tr>
+														</thead>
+														<c:forEach var="user" items="${users}">
+															<tbody>
+																<tr class="">
+																	<td class="center">
+																		<label class="pos-rel">
+																			<input type="checkbox"
+																				class="ace child-check" name="ids"
+																				value="${user.id}">
+																			<span class="lbl"></span>
+																		</label>
+																	</td>
 
-																<td>${user.id}</td>
-																<td>${user.fullName}</td>
-																<td>${user.email}</td>
-																<td>${user.role.name}</td>
-																<td>
-																	<div class="hidden-sm hidden-xs btn-group">
-																		<a href="/admin/user/${user.id}">
-																			<button type="button"
-																				class="btn btn-xs btn-success"
-																				title="Xem chi tiết">
-																				<svg xmlns="http://www.w3.org/2000/svg"
-																					width="16" height="14"
-																					fill="currentColor"
-																					class="bi bi-building-fill-up"
-																					viewBox="0 0 16 16">
-																					<path
-																						d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.854 1.5 1.5a.5.5 0 0 1-.708.708L13 11.707V14.5a.5.5 0 0 1-1 0v-2.793l-.646.647a.5.5 0 0 1-.708-.708l1.5-1.5a.5.5 0 0 1 .708 0">
-																					</path>
-																					<path
-																						d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7.256A4.5 4.5 0 0 0 12.5 8a4.5 4.5 0 0 0-3.59 1.787A.5.5 0 0 0 9 9.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .39-.187A4.5 4.5 0 0 0 8.027 12H6.5a.5.5 0 0 0-.5.5V16H3a1 1 0 0 1-1-1zm2 1.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m3 0v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5m3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5M4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z">
-																					</path>
-																				</svg>
-																			</button>
-																		</a>
-																		<a href="">
-																			<button class="btn btn-xs btn-info"
-																				title="Sửa tòa nhà">
+																	<td>${user.id}</td>
+																	<td>${user.fullName}</td>
+																	<td>${user.email}</td>
+																	<td>${user.role.name}</td>
+																	<td>
+																		<div class="hidden-sm hidden-xs btn-group">
+																			<a href="/admin/user/${user.id}">
+																				<button type="button"
+																					class="btn btn-xs btn-success"
+																					title="Xem chi tiết">
+																					<svg xmlns="http://www.w3.org/2000/svg"
+																						width="15" height="14"
+																						fill="currentColor"
+																						class="bi bi-person-exclamation"
+																						viewBox="0 0 16 16">
+																						<path
+																							d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
+																						<path
+																							d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0m-3.5-2a.5.5 0 0 0-.5.5v1.5a.5.5 0 0 0 1 0V11a.5.5 0 0 0-.5-.5m0 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1" />
+																					</svg>
+																				</button>
+																			</a>
+																			<a href="/admin/user/update/${user.id}"
+																				class="btn btn-xs btn-info"
+																				title="Sửa thông tin"
+																				style="height: 29.5px; width: 30px; margin: 0px 2px">
 																				<i
 																					class="ace-icon fa fa-pencil bigger-120"></i>
-																			</button>
-																		</a>
+																			</a>
 
-																		<a href="">
-																			<button class="btn btn-xs btn-danger"
-																				title="Xóa tòa nhà">
+																			<a href="/admin/user/delete/${user.id}"
+																				class="btn btn-xs btn-danger"
+																				title="Xóa người dùng"
+																				style="height: 29.5px; width: 30px;">
 																				<i
 																					class="ace-icon fa fa-trash-o bigger-120"></i>
-																			</button>
-																		</a>
+																			</a>
+																		</div>
+																	</td>
+																</tr>
+															</tbody>
+														</c:forEach>
+													</table>
+												</div>
+										</form>
+										<nav aria-label="Page navigation">
+											<ul class="pagination">
+												<li class="${currentPage eq 1 ? 'disabled' : ''}">
+													<a
+														href="${currentPage gt 1 ? '/admin/user?page=' += (currentPage-1) : ''}">&laquo;</a>
+												</li>
+												<c:forEach begin="1" end="${totalPages}" var="i">
+													<li class="${i eq currentPage ? 'active' : ''}">
+														<a href="/admin/user?page=${i}">${i}</a>
+													</li>
+												</c:forEach>
+												<li class="${currentPage eq totalPages ? 'disabled' : ''}">
+													<a
+														href="${currentPage lt totalPages ? '/admin/user?page=' += (currentPage+1) : ''}">&raquo;</a>
+												</li>
+											</ul>
+										</nav>
 
-																	</div>
-																</td>
-															</tr>
-														</tbody>
-													</c:forEach>
-												</table>
-											</div><!-- /.span -->
-										</div>
 									</div>
-
-								</div><!-- /.page-content -->
-							</div>
+								</div>
+							</div><!-- /.page-content -->
 						</div>
-					</div><!-- /.main-content -->
+					</div>
+				</div><!-- /.main-content -->
 
-					<jsp:include page="../layout/footer.jsp" />
+				<jsp:include page="../layout/footer.jsp" />
 
-					<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-						<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-					</a>
+				<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+					<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+				</a>
 				</div><!-- /.main-container -->
 
 				<script>
@@ -196,6 +218,15 @@
 							}
 						});
 					});
+
+					document.getElementById("btnDeleteSelected").addEventListener("click", function () {
+						const selected = document.querySelectorAll("input[name='ids']:checked");
+						if (selected.length === 0) {
+							alert("Vui lòng chọn ít nhất 1 người dùng để xóa.");
+							return;
+						}
+						document.getElementById("deleteForm").submit();
+					});
 				</script>
 				<!--[if !IE]> -->
 				<script src="/js/jquery.2.1.1.min.js"></script>
@@ -214,6 +245,6 @@
 				<script src="/js/jquery.flot.pie.min.js"></script>
 				<script src="/js/jquery.flot.resize.min.js"></script>
 				<script src="/js/ace-elements.min.js"></script>
-				<script src="/js/ace.min.js"></script>>
+				<script src="/js/ace.min.js"></script>
 
 			</body>

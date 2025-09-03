@@ -7,7 +7,7 @@
             <head>
                 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
                 <meta charset="utf-8" />
-                <title>Dashboard - Ace Admin</title>
+                <title>User Detail - Ace Admin</title>
 
                 <meta name="description" content="overview &amp; stats" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -24,14 +24,43 @@
                 <!-- ace styles -->
                 <link rel="stylesheet" href="/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
                 <script src="/js/ace-extra.min.js"></script>
+
+                <style>
+                    .profile-card {
+                        background: #fff;
+                        border-radius: 12px;
+                        padding: 30px;
+                        box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.15);
+                        margin-bottom: 30px;
+                        text-align: center;
+                    }
+
+                    .profile-card img {
+                        border-radius: 50%;
+                        max-width: 180px;
+                        height: 180px;
+                        object-fit: cover;
+                        margin-bottom: 20px;
+                        border: 5px solid #f1f1f1;
+                    }
+
+                    .profile-info {
+                        font-size: 16px;
+                        margin-top: 15px;
+                    }
+
+                    .profile-info strong {
+                        display: inline-block;
+                        width: 120px;
+                    }
+                </style>
+
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                 <script>
                     $(document).ready(() => {
-                        const avatarFile = $("#avatarFile");
-                        avatarFile.change(function (e) {
+                        $("#avatarFile").change(function (e) {
                             const imgURL = URL.createObjectURL(e.target.files[0]);
-                            $("#avatarPreview").attr("src", imgURL);
-                            $("#avatarPreview").css({ "display": "block" });
+                            $("#avatarPreview").attr("src", imgURL).show();
                         });
                     });
                 </script>
@@ -55,35 +84,42 @@
                                 </script>
 
                                 <ul class="breadcrumb">
-                                    <li>
-                                        <i class="ace-icon fa fa-home home-icon"></i>
-                                        <a href="#">Home</a>
-                                    </li>
-                                    <li class="active">Thông tin người dùng id = ${id}</li>
-                                </ul><!-- /.breadcrumb -->
+                                    <li><i class="ace-icon fa fa-home home-icon"></i> <a href="#">Home</a></li>
+                                    <li class="active">User Detail (ID = ${id})</li>
+                                </ul>
                             </div>
+
                             <div class="page-content">
                                 <div class="page-header">
                                     <h1>
-                                        <small>
-                                            <i class="ace-icon fa fa-angle-double-right"></i>
-                                            overview &amp; stats
-                                        </small>
+                                        Thông tin người dùng
+                                        <small><i class="ace-icon fa fa-angle-double-right"></i> chi tiết &amp; quản
+                                            lý</small>
                                     </h1>
-                                </div><!-- /.page-header -->
-                                <div class="row" style="font-family: 'Times New Roman', Times, serif;">
-                                    <div class="col-xs-12">
-                                            <div class="form-group col-md-12">
-                                                <img style="max-height: 250px; display: none;" alt="avatar preview"
-                                                    id="avatarPreview" />
-                                            </div>
+                                </div>
 
-                                            <div class="row">
-                                                <div class="col-md-12" style="margin-top: 20px;">
-                                                    <a href="/admin/user" class="btn btn-default">Hủy thao tác</a>
-                                                </div>
-                                            </div>
+                                <!-- Profile Card -->
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-8 col-md-offset-2">
+                                        <div class="profile-card">
+                                            <!-- Avatar -->
+                                            <img id="avatarPreview" src="/images/avatar/${user.avatar}" alt="Avatar" />
 
+                                            <!-- User Info -->
+                                            <div class="profile-info text-left">
+                                                <p><strong>Id:</strong> ${user.id}</p>
+                                                <p><strong>Họ tên:</strong> ${user.fullName}</p>
+                                                <p><strong>Địa chỉ:</strong> ${user.address}</p>
+                                                <p><strong>Email:</strong> ${user.email}</p>
+                                                <p><strong>SĐT:</strong> ${user.phone}</p>
+                                                <p><strong>Vai trò:</strong> ${user.role.name}</p>
+                                            </div>
+                                        </div>
+                                        <div style="margin-top: 25px;">
+                                            <a href="/admin/user" class="btn btn-default">
+                                                <i class="fa fa-arrow-left"></i> Quay lại
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -97,11 +133,9 @@
                     <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
                         <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
                     </a>
-                </div><!-- /.main-container -->
+                </div>
 
-                <!-- basic scripts -->
 
-                <!--[if !IE]> -->
                 <script src="/js/jquery.2.1.1.min.js"></script>
 
                 <script type="text/javascript">
@@ -125,3 +159,5 @@
                 <script src="/js/ace.min.js"></script>
 
             </body>
+
+            </html>

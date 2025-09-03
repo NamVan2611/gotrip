@@ -9,5 +9,6 @@ import com.spring.gotrip.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-    
+    boolean existsByEmail(String email);
+    User findByEmail(String email);
 }

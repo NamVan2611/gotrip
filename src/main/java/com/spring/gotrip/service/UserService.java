@@ -1,5 +1,6 @@
 package com.spring.gotrip.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -30,6 +31,14 @@ public class UserService {
         return userAdd;
     }
 
+    public boolean existsByEmail(String email){
+        return this.userRepository.existsByEmail(email);
+    }
+
+    public User getUserByEmail(String email){
+        return this.userRepository.findByEmail(email);
+    }
+
     public Role getRoleByName(String name){
         return this.roleRepository.findByName(name);
     }
@@ -37,4 +46,18 @@ public class UserService {
     public Optional<User> getUserById(Long id){
         return this.userRepository.findById(id);
     }
+
+    public List<User> getUsersByIds(List<Long> ids){
+        return this.userRepository.findAllById(ids);
+    }
+
+    public void deleteUserById(Long id){
+        this.userRepository.deleteById(id);
+    }
+
+    public void deleteUsers(List<Long> ids){
+        this.userRepository.deleteAllById(ids);
+    }
+
+    
 }
