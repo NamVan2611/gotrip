@@ -38,13 +38,8 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/")
-    public String getMethodName(Model model) {
-        model.addAttribute("vincent", "this is the first step");
-        return "hello";
-    }
 
-    @RequestMapping("/admin/user")
+    @GetMapping("/admin/user")
     public String getUserPage(Model model, @RequestParam(name = "page", defaultValue = "1") int page) {
         Pageable pageable = PageRequest.of(page - 1, 5);
         Page<User> userPage = this.userService.getAllUser(pageable);
@@ -109,10 +104,10 @@ public class UserController {
         if (userOptional.isPresent()) {
             User currentUser = userOptional.get();
             currentUser.setEmail(user.getEmail());
-            currentUser.setPassword(user.getPassword());
             currentUser.setAddress(user.getAddress());
             currentUser.setFullName(user.getFullName());
             currentUser.setPhone(user.getPhone());
+            currentUser.setPassword(this.passwordEncoder.encode(user.getPassword()));
             if (multipartFile != null && !multipartFile.isEmpty()) {
                 currentUser.setAvatar(this.uploadService.handleSaveUploadFile(multipartFile, "avatar"));
             }

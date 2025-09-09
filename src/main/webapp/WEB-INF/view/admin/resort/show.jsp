@@ -48,7 +48,7 @@
 							<div class="page-content">
 								<div class="page-header">
 									<h1>
-										Danh sách người dùng
+										Danh sách resort
 										<small>
 											<i class="ace-icon fa fa-angle-double-right"></i>
 											overview &amp; stats
@@ -57,11 +57,11 @@
 								</div><!-- /.page-header -->
 								<div class="row">
 									<div class="col-xs-12">
-										<form id="deleteForm" method="post" action="/admin/user/delete/confirm">
+										<form id="deleteForm" method="post" action="/admin/resort/delete/confirm">
 											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 											<div class="pull-right"
 												style="font-family: 'Times New Roman', Times, serif;">
-												<a href="/admin/user/create">
+												<a href="/admin/resort/create">
 													<button type="button" class="btn btn-success" fdprocessedid="b81s1">
 														<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 															fill="currentColor" class="bi bi-person-add"
@@ -107,25 +107,25 @@
 																<th>Thao tác</th>
 															</tr>
 														</thead>
-														<c:forEach var="user" items="${users}">
+														<c:forEach var="resort" items="${resorts}">
 															<tbody>
 																<tr class="">
 																	<td class="center">
 																		<label class="pos-rel">
 																			<input type="checkbox"
 																				class="ace child-check" name="ids"
-																				value="${user.id}">
+																				value="${resort.id}">
 																			<span class="lbl"></span>
 																		</label>
 																	</td>
 
-																	<td>${user.id}</td>
-																	<td>${user.fullName}</td>
-																	<td>${user.email}</td>
-																	<td>${user.role.name}</td>
+																	<td>${resort.id}</td>
+																	<td>${resort.fullName}</td>
+																	<td>${resort.email}</td>
+																	<td>${resort.role.name}</td>
 																	<td>
 																		<div class="hidden-sm hidden-xs btn-group">
-																			<a href="/admin/user/${user.id}">
+																			<a href="/admin/resort/${resort.id}">
 																				<button type="button"
 																					class="btn btn-xs btn-success"
 																					title="Xem chi tiết">
@@ -141,7 +141,7 @@
 																					</svg>
 																				</button>
 																			</a>
-																			<a href="/admin/user/update/${user.id}"
+																			<a href="/admin/resort/update/${resort.id}"
 																				class="btn btn-xs btn-info"
 																				title="Sửa thông tin"
 																				style="height: 29.5px; width: 30px; margin: 0px 2px">
@@ -149,7 +149,7 @@
 																					class="ace-icon fa fa-pencil bigger-120"></i>
 																			</a>
 
-																			<a href="/admin/user/delete/${user.id}"
+																			<a href="/admin/resort/delete/${resort.id}"
 																				class="btn btn-xs btn-danger"
 																				title="Xóa người dùng"
 																				style="height: 29.5px; width: 30px;">
@@ -168,16 +168,16 @@
 											<ul class="pagination">
 												<li class="${currentPage eq 1 ? 'disabled' : ''}">
 													<a
-														href="${currentPage gt 1 ? '/admin/user?page=' += (currentPage-1) : ''}">&laquo;</a>
+														href="${currentPage gt 1 ? '/admin/resort?page=' += (currentPage-1) : ''}">&laquo;</a>
 												</li>
 												<c:forEach begin="1" end="${totalPages}" var="i">
 													<li class="${i eq currentPage ? 'active' : ''}">
-														<a href="/admin/user?page=${i}">${i}</a>
+														<a href="/admin/resort?page=${i}">${i}</a>
 													</li>
 												</c:forEach>
 												<li class="${currentPage eq totalPages ? 'disabled' : ''}">
 													<a
-														href="${currentPage lt totalPages ? '/admin/user?page=' += (currentPage+1) : ''}">&raquo;</a>
+														href="${currentPage lt totalPages ? '/admin/resort?page=' += (currentPage+1) : ''}">&raquo;</a>
 												</li>
 											</ul>
 										</nav>

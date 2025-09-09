@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.gotrip.model.Role;
 import com.spring.gotrip.model.User;
+import com.spring.gotrip.model.dto.RegisterDTO;
 import com.spring.gotrip.repository.RoleRepository;
 import com.spring.gotrip.repository.UserRepository;
 
@@ -59,5 +60,13 @@ public class UserService {
         this.userRepository.deleteAllById(ids);
     }
 
+    public User transferRegisterToUser(RegisterDTO registerDTO){
+        User user = new User();
+        user.setFullName(registerDTO.getFirstName() + registerDTO.getLastName());
+        user.setEmail(registerDTO.getEmail());
+        user.setPassword(registerDTO.getPassword());
+        user.setPassword(registerDTO.getConfirmPassword());
+        return user;
+    }
     
 }

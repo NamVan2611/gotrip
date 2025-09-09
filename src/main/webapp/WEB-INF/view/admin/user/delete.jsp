@@ -65,9 +65,9 @@
                                 <div class="row" style="font-family: 'Times New Roman', Times, serif;">
                                     <div class="col-xs-12">
                                         <form method="post" action="/admin/user/delete">
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                             <div class="alert alert-danger">Bạn có chắc chắn muốn xóa những người dùng
                                                 này?</div>
-
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
@@ -93,6 +93,8 @@
                                             <button type="submit" class="btn btn-danger">Confirm Delete</button>
                                             <a href="/admin/user" class="btn btn-secondary">Cancel</a>
                                         </form>
+
+
                                     </div>
                                 </div>
                             </div><!-- /.page-content -->

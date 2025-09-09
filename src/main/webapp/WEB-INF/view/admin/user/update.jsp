@@ -91,7 +91,7 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="form-label">Password:</label>
                                                     <form:input type="password" path="password"
-                                                        cssClass="form-control ${not empty errors['password'] ? 'is-invalid' : ''}" />
+                                                        cssClass="form-control ${not empty errors['password'] ? 'is-invalid' : ''}"/> 
                                                     <form:errors path="password"
                                                         cssClass="invalid-feedback text-danger" />
                                                 </div>
