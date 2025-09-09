@@ -7,6 +7,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
 import java.util.List;
 
 @Entity
@@ -17,15 +21,22 @@ public class Resort {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Tên resort không được để trống")
     private String name;
 
+    @NotBlank(message = "Địa chỉ không được để trống")
     private String address;
 
     private String description;
 
+    @Pattern(regexp = "^(\\+84|0)\\d{9,10}$", message = "Số điện thoại không hợp lệ (VD: 0901234567 hoặc +84901234567)")
     private String phone;
 
+    @Email(message = "Email không hợp lệ")
+    @NotBlank(message = "Email không được để trống")
     private String email;
+
+    private String image;
 
     // 1 Resort có nhiều Room
     @OneToMany(mappedBy = "resort", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -87,4 +98,13 @@ public class Resort {
     public void setRooms(List<Room> rooms) {
         this.rooms = rooms;
     }
+    
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
 }

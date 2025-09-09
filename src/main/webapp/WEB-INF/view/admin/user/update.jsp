@@ -76,7 +76,7 @@
                                     <div class="col-xs-12">
                                         <form:form method="post" action="/admin/user/update" modelAttribute="newUser"
                                             class="form-horizontal" enctype="multipart/form-data">
-                                            <div class="mb-3" style="display: none;">
+                                            <div class="mb-3" style="display: none;"> 
                                                 <label class="form-label">Id:</label>
                                                 <form:input type="text" class="form-control" path="id" />
                                             </div>

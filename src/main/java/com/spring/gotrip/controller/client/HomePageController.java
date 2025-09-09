@@ -1,5 +1,10 @@
 package com.spring.gotrip.controller.client;
 
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,8 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.spring.gotrip.model.Resort;
 import com.spring.gotrip.model.User;
 import com.spring.gotrip.model.dto.RegisterDTO;
+import com.spring.gotrip.service.ResortService;
 import com.spring.gotrip.service.UserService;
 
 import jakarta.validation.Valid;
@@ -19,17 +26,21 @@ public class HomePageController {
 
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
+    private final ResortService resortService;
     
-    public HomePageController(UserService userService, PasswordEncoder passwordEncoder) {
+    public HomePageController(UserService userService, PasswordEncoder passwordEncoder, ResortService resortService) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;
+        this.resortService = resortService;
     }
 
     @GetMapping("/")
     public String getHomePage(Model model) {
-        
-        model.addAttribute("homepage", "this is the first step");
-        return "hello";
+        Pageable pageable = PageRequest.of(0, 6);
+        Page<Resort> resortPage = this.resortService.getAllResort(pageable);
+        List<Resort> resortList = resortPage.getContent();
+        model.addAttribute("resorts", resortList); 
+        return "client/homepage/show";
     }
 
     @GetMapping("/login")

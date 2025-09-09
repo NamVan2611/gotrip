@@ -71,7 +71,7 @@
 															<path
 																d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
 														</svg>
-														Thêm người dùng
+														Thêm Resort
 													</button>
 												</a>
 												<button type="button" class="btn btn-primary" fdprocessedid="5jng"
@@ -84,7 +84,7 @@
 														<path
 															d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
 													</svg>
-													Xóa người dùng
+													Xóa Resort
 												</button>
 											</div>
 											<div class="row" style="margin-bottom: 360px; margin-top: 55px;">
@@ -101,9 +101,9 @@
 																	</label>
 																</th>
 																<th>ID</th>
-																<th>Tên người dùng</th>
+																<th>Tên Resort</th>
 																<th>Email</th>
-																<th>Vai trò</th>
+																<th>SDT</th>
 																<th>Thao tác</th>
 															</tr>
 														</thead>
@@ -120,9 +120,9 @@
 																	</td>
 
 																	<td>${resort.id}</td>
-																	<td>${resort.fullName}</td>
+																	<td>${resort.name}</td>
 																	<td>${resort.email}</td>
-																	<td>${resort.role.name}</td>
+																	<td>${resort.phone}</td>
 																	<td>
 																		<div class="hidden-sm hidden-xs btn-group">
 																			<a href="/admin/resort/${resort.id}">
@@ -134,10 +134,7 @@
 																						fill="currentColor"
 																						class="bi bi-person-exclamation"
 																						viewBox="0 0 16 16">
-																						<path
-																							d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
-																						<path
-																							d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0m-3.5-2a.5.5 0 0 0-.5.5v1.5a.5.5 0 0 0 1 0V11a.5.5 0 0 0-.5-.5m0 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1" />
+																						<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
 																					</svg>
 																				</button>
 																			</a>

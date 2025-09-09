@@ -39,9 +39,11 @@ public class Booking {
     @Column(length = 20)
     private String status = "pending"; // pending / confirmed / cancelled
 
-    // Quan hệ N-N với Service
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BookingService> bookingServices;
+
+    @OneToMany(mappedBy = "booking")
+    private List<BookingHistory> histories;
 
     // Getter & Setter
     public Long getId() {
