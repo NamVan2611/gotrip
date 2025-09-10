@@ -1,28 +1,25 @@
-🏨 Resort & Room Management
+#  🏨 GoTrip – Resort & Room Management
 
-Ứng dụng web quản lý Resort & Room xây dựng bằng Spring MVC + JSP + MySQL.
-Hỗ trợ admin quản lý resort, thêm phòng, upload ảnh, đặt giá & trạng thái một cách trực quan.
+Ứng dụng web tối giản để admin quản lý **Resort & Room**—thêm resort, tạo phòng, upload ảnh với giao diện trực quan.
 
-🚀 Công nghệ
-
+**Tech Stack**  
 Java · Spring MVC · Hibernate · JSP/JSTL · Bootstrap · MySQL
 
-✨ Tính năng
+---
 
-CRUD Resort & Room
+###  Tính năng chính  
+- **CRUD Resort & Room**  
+- **Upload & preview ảnh phòng** trước khi lưu  
+- Quản lý **số phòng, loại, giá, trạng thái** dễ dàng
 
-Upload & preview ảnh phòng
+---
 
-Quản lý số phòng, loại, giá, trạng thái
+###  Cài đặt nhanh  
 
-⚡ Cài đặt nhanh
-git clone https://github.com/yourusername/resort-room-management.git
-
-
-Tạo database resort_db trong MySQL
-
-Sửa application.properties với user/password DB
-
-Run trên Tomcat → http://localhost:8080/admin/resort
-
-👉 Gọn nhẹ, dễ deploy, sẵn sàng mở rộng thành hệ thống đặt phòng online.
+```bash
+git clone https://github.com/NamVan2611/gotrip.git
+cd gotrip
+# Cấu hình database trong application.properties
+# Tạo DB resort_db trong MySQL
+# Run project trên Tomcat rồi truy cập:
+http://localhost:8080/admin/resort
