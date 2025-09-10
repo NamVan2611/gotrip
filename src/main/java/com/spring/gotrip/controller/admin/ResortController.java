@@ -45,7 +45,7 @@ public class ResortController {
     }
 
     @RequestMapping("/admin/resort/{id}")
-    public String getresortDetailPage(Model model, @PathVariable long id) {
+    public String getResortDetailPage(Model model, @PathVariable long id) {
         Resort resort = this.resortService.getResortById(id);
         model.addAttribute("resort", resort);
         model.addAttribute("id", id);

@@ -27,6 +27,9 @@ public class ResortService {
     public Page<Resort> getAllResort(Pageable pageable){
         return this.resortRepository.findAll(pageable);
     }
+    public List<Resort> getAllResortByList(){
+        return this.resortRepository.findAll();
+    }
 
     public Resort getResortById(long id){
         return this.resortRepository.findById(id);

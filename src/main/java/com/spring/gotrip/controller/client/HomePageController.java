@@ -36,7 +36,7 @@ public class HomePageController {
 
     @GetMapping("/")
     public String getHomePage(Model model) {
-        Pageable pageable = PageRequest.of(0, 6);
+        Pageable pageable = PageRequest.of(0, 15);
         Page<Resort> resortPage = this.resortService.getAllResort(pageable);
         List<Resort> resortList = resortPage.getContent();
         model.addAttribute("resorts", resortList); 

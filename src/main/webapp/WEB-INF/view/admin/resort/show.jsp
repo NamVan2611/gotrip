@@ -148,7 +148,7 @@
 
 																			<a href="/admin/resort/delete/${resort.id}"
 																				class="btn btn-xs btn-danger"
-																				title="Xóa người dùng"
+																				title="Xóa Resort"
 																				style="height: 29.5px; width: 30px;">
 																				<i
 																					class="ace-icon fa fa-trash-o bigger-120"></i>

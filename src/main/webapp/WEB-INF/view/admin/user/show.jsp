@@ -7,6 +7,7 @@
 			<head>
 				<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 				<meta charset="utf-8" />
+				<link rel="shortcut icon" type="image/x-icon" href="/client/img/favicon.ico">
 				<title>Dashboard - Ace Admin</title>
 
 				<meta name="description" content="overview &amp; stats" />

@@ -10,4 +10,5 @@ import com.spring.gotrip.model.Resort;
 public interface ResortRepository extends JpaRepository<Resort, Long> {
     Resort findById(long id);
     void deleteById(long id);
+    Resort findByName(String name);
 }

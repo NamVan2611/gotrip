@@ -27,6 +27,8 @@ public class Room {
     @Column(length = 20)
     private String status = "available"; // available / booked / maintenance
 
+    private String image;
+
     // Quan hệ: nhiều Room thuộc 1 Resort
     @ManyToOne
     @JoinColumn(name = "resort_id", nullable = false)
@@ -79,5 +81,13 @@ public class Room {
 
     public void setResort(Resort resort) {
         this.resort = resort;
+    }
+
+        public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
