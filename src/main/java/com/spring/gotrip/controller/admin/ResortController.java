@@ -33,7 +33,7 @@ public class ResortController {
         this.resortService = resortService;
     }
 
-    @GetMapping("admin/resort")
+    @GetMapping("/admin/resort")
     public String getResortPage(Model model, @RequestParam(name = "page", defaultValue = "1") int page) {
         Pageable pageable = PageRequest.of(page - 1, 8);
         Page<Resort> resortPage = this.resortService.getAllResort(pageable);

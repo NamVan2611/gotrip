@@ -77,17 +77,6 @@
                                                     </a>
                                                 </h4>
                                                 <p style="font-size: 13px">${resort.description}</p>
-                                                <div class="d-flex justify-content-center flex-lg-wrap flex-column">
-                                                    <form action="/add-resort-to-cart/${resort.id}" method="post">
-                                                        <input type="hidden" name="${_csrf.parameterName}"
-                                                            value="${_csrf.token}" />
-                                                        <button type="submit"
-                                                            class="mx-auto btn border border-secondary rounded-pill px-3 text-primary">
-                                                            <i class="fa fa-shopping-bag me-2 text-primary"></i> Book
-                                                            now
-                                                        </button>
-                                                    </form>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>

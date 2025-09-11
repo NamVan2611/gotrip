@@ -49,4 +49,8 @@ public class RoomService {
     public List<Room> getRoomsByIds(List<Long> ids){
         return this.roomRepository.findAllById(ids);
     }
+
+    public List<Room> getRoomsByResortId(long id){
+        return this.roomRepository.findAllRoomsByResortId(id);
+    }
 }

@@ -36,7 +36,7 @@ public class RoomController {
         this.resortService = resortService;
     }
 
-    @GetMapping("admin/room")
+    @GetMapping("/admin/room")
     public String getRoomPage(Model model, @RequestParam(name = "page", defaultValue = "1") int page) {
         Pageable pageable = PageRequest.of(page - 1, 8);
         Page<Room> roomPage = this.roomService.getAllRoom(pageable);
