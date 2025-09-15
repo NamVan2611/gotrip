@@ -26,6 +26,62 @@
                 <link rel="stylesheet" href="/client/css/nice-select.css">
                 <link rel="stylesheet" href="/client/css/style.css">
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                <script>
+                    function goToResortPage(event) {
+                        event.preventDefault();
+
+                        const resortId = document.getElementById("resortId").value;
+                        const checkIn = document.getElementById("checkIn").value;
+                        const checkOut = document.getElementById("checkOut").value;
+
+                        if (!resortId || !checkIn || !checkOut) {
+                            alert("Vui lòng chọn Resort và nhập ngày Check-in, Check-out!");
+                            return false;
+                        }
+                        if (new Date(checkOut) <= new Date(checkIn)) {
+                            alert("Ngày Check-out phải sau ngày Check-in!");
+                            return false;
+                        }
+                        const url = "/resort/" + resortId + "/" + encodeURIComponent(checkIn) + "/" + encodeURIComponent(checkOut);
+                        window.location.href = url;
+                        return true;
+                    }
+
+                    function selectResort(resortId) {
+                        console.log("Clicked resort:", resortId);
+                        const select = document.getElementById("resortId");
+                        if (select) {
+                            for (let i = 0; i < select.options.length; i++) {
+                                if (select.options[i].value === resortId.toString()) {
+                                    select.selectedIndex = i;
+                                    console.log("Selected:", select.options[i].text);
+                                    break;
+                                }
+                            }
+                            if (window.jQuery && $(select).hasClass('nice-select')) {
+                                $(select).niceSelect('update');
+                            }
+                        }
+                        const form = document.getElementById("bookingForm");
+                        if (form) {
+                            form.scrollIntoView({ behavior: "smooth", block: "center" });
+                        }
+                    }
+                </script>
+                <style>
+                    .custom-resort-select {
+                        border: 1px solid rgba(0, 0, 0, 0.15);
+                        border-radius: 5px;
+                        padding: 0.5rem 0.75rem;
+                        box-shadow: none;
+                        transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+                    }
+
+                    .custom-resort-select:focus {
+                        border-color: #80bdff;
+                        box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.25);
+                    }
+                </style>
 
             </head>
 
@@ -50,6 +106,54 @@
                     <jsp:include page="../layout/banner.jsp" />
                     <div class="favourite-place place-padding">
                         <div class="container">
+                            <!-- Search Box -->
+                            <div class="row" style="margin-bottom: 200px;">
+                                <div class="col-lg-12">
+                                    <div class="section-tittle text-center">
+                                        <h2>Book now</h2>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12">
+                                    <!-- Search Form -->
+                                    <form id="bookingForm" onsubmit="return goToResortPage(event)">
+                                        <div class="row g-3 align-items-end">
+                                            <!-- Resort -->
+                                            <div class="col-lg-3 col-md-6">
+                                                <label for="resortId" class="form-label fw-semibold">Resort</label>
+                                                <select name="resortId" id="resortId"
+                                                    class="form-select custom-resort-select" required>
+                                                    <option value="">-- Chọn Resort --</option>
+                                                    <c:forEach var="res" items="${resorts}">
+                                                        <option value="${res.id}">${res.name}</option>
+                                                    </c:forEach>
+                                                </select>
+                                            </div>
+
+                                            <!-- Check-in -->
+                                            <div class="col-lg-3 col-md-6">
+                                                <label for="checkIn" class="form-label fw-semibold">Check-in</label>
+                                                <input type="date" id="checkIn" name="checkIn" class="form-control"
+                                                    required>
+                                            </div>
+
+                                            <!-- Check-out -->
+                                            <div class="col-lg-3 col-md-6">
+                                                <label for="checkOut" class="form-label fw-semibold">Check-out</label>
+                                                <input type="date" id="checkOut" name="checkOut" class="form-control"
+                                                    required>
+                                            </div>
+
+                                            <!-- Nút search -->
+                                            <div class="col-lg-3 col-md-6 d-grid">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fas fa-search me-1"></i> Search
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
                             <!-- Section Tittle -->
                             <div class="row">
                                 <div class="col-lg-12">
@@ -72,10 +176,12 @@
                                                 style="top: 10px; left: 10px;">Resort</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                 <h4 style="font-size: 15px">
-                                                    <a href="/resort/${resort.id}">
+                                                    <a href="javascript:void(0);"
+                                                        onclick="selectResort('${resort.id}')">
                                                         ${resort.name}
                                                     </a>
                                                 </h4>
+
                                                 <p style="font-size: 13px">${resort.description}</p>
                                             </div>
                                         </div>

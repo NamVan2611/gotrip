@@ -112,9 +112,14 @@
                                                     <fmt:formatNumber value="${room.price}" type="currency" />
                                                 </span>
                                             </p>
-                                            <a href="/booking/room/${room.id}" class="btn btn-gradient btn-primary">
-                                                <i class="fas fa-calendar-check me-1"></i> Đặt phòng
-                                            </a>
+                                            <form method="get" action="/booking/room/${room.id}">
+                                                <input type="hidden" name="checkInDate" value="${checkInDate}">
+                                                <input type="hidden" name="checkOutDate" value="${checkOutDate}">
+                                                <button type="submit" class="btn btn-gradient btn-primary">
+                                                    <i class="fas fa-calendar-check me-1"></i> Đặt phòng
+                                                </button>
+                                            </form>
+
                                         </div>
                                     </div>
                                 </div>
